@@ -16,7 +16,7 @@ Created on Fri Oct 25 09:21:35 2019
 import FNC as fn
 letrasProposicionalesA = ['p', 'q', 'r', 's', 't']
 # # Formula a la cual encontrar su forma clausal
-## Holi cambie algo
+## Holi cambie algo x2
 formula = "(-p)"
 
 # Aplicando el algoritmo de Tseitin a formula
