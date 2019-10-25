@@ -16,7 +16,7 @@ Created on Fri Oct 25 09:21:35 2019
 import FNC as fn
 letrasProposicionalesA = ['p', 'q', 'r', 's', 't']
 # # Formula a la cual encontrar su forma clausal
-formula = "(p>q)"
+formula = "(-p)"
 
 # Aplicando el algoritmo de Tseitin a formula
 # Se obtiene una cada que representa la formula en FNC
