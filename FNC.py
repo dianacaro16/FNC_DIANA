@@ -49,10 +49,51 @@ def enFNC(A):
 def Tseitin(A, letrasProposicionalesA):
     letrasProposicionalesB = [chr(x) for x in range(256, 300)]
     assert(not bool(set(letrasProposicionalesA) & set(letrasProposicionalesB))), u"¡Hay letras proposicionales en común!"
-
-    # CODIGO AQUI
-
-    return "OK"
+    conjun = []
+    pila = []
+    i = -1
+    s = A[0]
+    while len(A)>0:
+        if s in letrasProposicionalesA and pila[-1]=="-":
+            i += 1
+            atomo = letrasProposicionalesB[i]
+            pila = pila[:-1]
+            pila.append(atomo)
+            o = atomo + "<>" + s
+            conjun.append(o)
+            A = A[1:]
+            s = A[0]
+            if len(A)>0:
+                s = A[0]
+        elif s == ")":
+            w = pila[-1]
+            O = pila[-2]
+            v = pila[-3]
+            pila = pila[:len(pila)-4]
+            i+=1
+            atomo = letrasProposicionalesB[i]
+            f = atomo + "<>" + "(" + v + O + w + ")"
+            conjun.append(f)
+            s = atomo
+        else:
+            pila.append(s)
+            A = A[1:]
+            if len(A)>0:
+                s = A[0]
+#    print(w)
+#    print(o)
+#    print(v)
+#    print(pila)
+    B = ""
+    if i < 0:
+        atomo = pila[-1]
+    else:
+        atomo = letrasProposicionalesB[i]
+    for x in conjun:
+        y = enFNC(x)
+        B += "Y" + y
+    B = atomo + B
+    return B
 
 # Subrutina Clausula para obtener lista de literales
 # Input: C (cadena) una clausula
